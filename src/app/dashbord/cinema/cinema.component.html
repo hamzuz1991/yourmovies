@@ -1,0 +1,461 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <h4>{{howaitem}}</h4><button (click)="logout()" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+      </form>
+    </div>
+  </nav>
+<div class="container okiokioki">
+    
+  <div class="row justify-content-md-center">
+    <div class="col">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapseExample">
+            Cinema
+        </button>
+    </div>
+    <div class="col">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapseExample">
+            Film
+        </button>      
+    </div>
+    <div class="col">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapseExample">
+            Heure Film
+        </button>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="container-fluid">
+    <!--Cinema-->
+      <div class="collapse" id="collapse1">
+          <div class="card-body">
+              <div class="container">
+                  <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Cinema<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Add</button></h5>
+                        
+                        <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Adresse</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Latitude</th>
+                                <th scope="col">Longitude</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr  *ngFor="let item of itemArray; index as i">
+                                <td>{{item.name}}</td>
+                                <td>{{item.adr}}</td>
+                                <td>{{item.phone}}</td>
+                                <td>{{item.email}}</td>
+                                <td>{{item.lat}}</td>
+                                <td>{{item.longit}}</td>
+                                <td><button type="button" class="btn btn-primary" (click)="onUpdateCin(item.$key)" data-toggle="modal" data-target="#modalmodal">Update</button>
+                                <!-- Modal -->
+                <div class="modal fade" id="modalmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Add New Cinema</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card bg-light">
+                                <article class="card-body mx-auto">
+                                  <form>
+                                  <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                     </div>
+                                        <input name="" class="form-control" placeholder="{{CinData.name}}" name="cinName" [(ngModel)]="CinData.name" type="text">
+                                    </div> <!-- form-group// -->
+                                    <div class="form-group input-group">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                                     </div>
+                                        <input name="" class="form-control" placeholder="{{CinData.email}}" name="cinEmail" [(ngModel)]="CinData.email" type="email">
+                                    </div> <!-- form-group// -->
+                                    <div class="form-group input-group">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                                    </div>
+                                    <select class="custom-select">
+                                        <option selected="">+216</option>
+                                    </select>
+                                      <input name="" class="form-control" placeholder="{{CinData.phone}}" name="cinPhone" [(ngModel)]="CinData.phone" type="text">
+                                    </div>
+                
+                                    <div class="form-group input-group">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"> <i class="fa fa-address-book"></i> </span>
+                                      </div>
+                                      <textarea class="form-control" name="cinAdr" [(ngModel)]="CinData.adr" aria-label="Cinema Adress" placeholder="{{CinData.adr}}"></textarea>                      </div> <!-- form-group// -->
+                
+                                    <div class="form-group input-group">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"> <i class="fa fa-thumbtack"></i> </span>
+                                        </div>
+                                          <input class="form-control" placeholder="{{CinData.lat}}" name="cinLat" [(ngModel)]="CinData.lat" type="text">
+                                    </div> <!-- form-group// -->
+                                    
+                                    <div class="form-group input-group">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"> <i class="fa fa-thumbtack"></i> </span>
+                                        </div>
+                                          <input class="form-control" placeholder="{{CinData.longit}}" name="cinLongit" [(ngModel)]="CinData.longit" type="text">
+                                    </div> <!-- form-group// -->                                                              
+                                </form>
+                                </article>
+                                </div> <!-- card.// -->
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary" (click)="UpdateCinema(CinData.$key)" data-dismiss="modal">Update</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div></td>
+                                <td><button type="button" class="btn btn-danger" (click)="DeletCinema(item.$key)">Delete</button></td>
+                              </tr>                
+                            </tbody>
+                          </table>
+                      </div>
+                    </div>
+              </div>
+          </div>
+      </div>
+      <!--Film-->
+      <div class="collapse" id="collapse2">
+          <div class="card-body">
+              <div class="container">
+                  <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Film<button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalAddFilm">Add</button></h5>
+                        
+                        <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th scope="col">Movie name</th>
+                                <th scope="col">Year of production</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr  *ngFor="let item of filmArray">
+                                <td>{{item.name}}</td>
+                                <td>{{item.year}}</td>
+                                <td><button type="button" class="btn btn-primary" (click)="OnUpdateFilm(item.$key)" data-toggle="modal" data-target="#updateFilm">Update</button>
+                                <!-- Modal -->
+                <div class="modal fade" id="updateFilm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Update Movie details</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card bg-light">
+                                <article class="card-body mx-auto">
+                                  <form>
+                                  <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fas fa-video"></i> </span>
+                                     </div>
+                                        <input name="" class="form-control" placeholder={{FilmData.name}} name="filmName" [(ngModel)]="FilmData.name" type="text">
+                                    </div> <!-- form-group// -->
+                                    <div class="form-group input-group">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="far fa-calendar-alt"></i> </span>
+                                     </div>
+                                        <input name="" class="form-control" placeholder={{FilmData.year}} name="filmYear" [(ngModel)]="FilmData.year" type="text">
+                                    </div> <!-- form-group// -->                                                             
+                                </form>
+                                </article>
+                                </div> <!-- card.// -->
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary" (click)="UpdateFilm(item.$key)" data-dismiss="modal">Update</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div></td>
+                                <td><button type="button" class="btn btn-danger" (click)="DeleteFilm(item.$key)">Delete</button></td>
+                              </tr>                
+                            </tbody>
+                          </table>
+                      </div>
+                    </div>
+              </div>
+          </div>
+      </div>
+      <!--heure-->
+      <div class="collapse" id="collapse3">
+          <div class="card-body">
+              <div class="container">
+                  <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Heure<button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalAddHeure">Add</button></h5>
+                        
+                        <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th scope="col">Movie</th>
+                                <th scope="col">Cinema </th>
+                                <th scope="col">Day</th>
+                                <th scope="col">Time</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr  *ngFor="let item of heureArray">
+                                <td>{{item.film}}</td>
+                                <td>{{item.cinema}}</td>
+                                <td>{{item.day}}</td>
+                                <td>{{item.heure}}</td>
+                                <td><button type="button" class="btn btn-primary" (click)="OnUpdateHeure(item.$key)" data-toggle="modal" data-target="#updateHeure">Update</button>
+                                <!-- Modal -->
+                <div class="modal fade" id="updateHeure" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Update Huere details</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card bg-light">
+                                <article class="card-body mx-auto">
+                                  <form>
+                                  <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fas fa-video"></i> </span>
+                                     </div>
+                                     <select class="form-control" id="filsel" name="HeureData.filmheure" [(ngModel)]="HeureData.filmheure">
+                                        <option *ngFor="let item of filmArray" value={{item.name}}>{{item.name}}</option>
+                                      </select>
+                                    </div> <!-- form-group// -->
+            
+                                    <div class="form-group input-group">
+                                      <div class="input-group-prepend">
+                                          <span class="input-group-text"> <i class="fas fa-home"></i> </span>
+                                       </div>
+                                       <select class="form-control" id="cinsel" name="HeureData.cinheure" [(ngModel)]="HeureData.cinheure">
+                                          <option *ngFor="let item of itemArray" value={{item.name}}>{{item.name}}</option>
+                                        </select>
+                                      </div> <!-- form-group// -->
+            
+                                    <div class="form-group input-group">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="far fa-calendar-alt"></i> </span>
+                                     </div>
+                                        <input name="" class="form-control" placeholder={{HeureData.DayHeure}} name="DayHeure" [(ngModel)]="HeureData.DayHeure" type="email">
+                                    </div> <!-- form-group// -->   
+                                    
+                                    <div class="form-group input-group">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"> <i class="far fa-clock"></i> </span>
+                                       </div>
+                                          <input name="" class="form-control" placeholder={{HeureData.hHeure}} name="hHeure" [(ngModel)]="HeureData.hHeure" type="email">
+                                      </div> <!-- form-group// --> 
+                                </form>
+                                </article>
+                                </div> <!-- card.// -->
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary" (click)="updateHeure(item.$key)" data-dismiss="modal">Update</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div></td>
+                                <td><button type="button" class="btn btn-danger" (click)="DeleteHeure(item.$key)">Delete</button></td>
+                              </tr>                
+                            </tbody>
+                          </table>
+                      </div>
+                    </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+ <!-- Modal add cinema -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add New Cinema</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="card bg-light">
+                <article class="card-body mx-auto">
+                  <form>
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                     </div>
+                        <input name="" class="form-control" placeholder="Full name" name="cinName" [(ngModel)]="cinName" type="text">
+                    </div> <!-- form-group// -->
+                    <div class="form-group input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                     </div>
+                        <input name="" class="form-control" placeholder="Email address" name="cinEmail" [(ngModel)]="cinEmail" type="email">
+                    </div> <!-- form-group// -->
+                    <div class="form-group input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                    </div>
+                    <select class="custom-select">
+                        <option selected="">+216</option>
+                    </select>
+                      <input name="" class="form-control" placeholder="Phone number" name="cinPhone" [(ngModel)]="cinPhone" type="text">
+                    </div>
+
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"> <i class="fa fa-address-book"></i> </span>
+                      </div>
+                      <textarea class="form-control" name="cinAdr" [(ngModel)]="cinAdr" aria-label="Cinema Adress"></textarea>                      </div> <!-- form-group// -->
+
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"> <i class="fa fa-thumbtack"></i> </span>
+                        </div>
+                          <input class="form-control" placeholder="Latitude" name="cinLat" [(ngModel)]="cinLat" type="text">
+                    </div> <!-- form-group// -->
+                    
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"> <i class="fa fa-thumbtack"></i> </span>
+                        </div>
+                          <input class="form-control" placeholder="Longitude" name="cinLongit" [(ngModel)]="cinLongit" type="text">
+                    </div> <!-- form-group// -->                                                              
+                </form>
+                </article>
+                </div> <!-- card.// -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="AddCinema()" data-dismiss="modal">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal add Film -->
+  <div class="modal fade" id="ModalAddFilm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add New Movie</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div class="card bg-light">
+                  <article class="card-body mx-auto">
+                    <form>
+                    <div class="form-group input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"> <i class="fas fa-video"></i> </span>
+                       </div>
+                          <input name="" class="form-control" placeholder="Your Movie Name" name="filmName" [(ngModel)]="filmName" type="text">
+                      </div> <!-- form-group// -->
+                      <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"> <i class="far fa-calendar-alt"></i> </span>
+                       </div>
+                          <input name="" class="form-control" placeholder="Year of production" name="filmYear" [(ngModel)]="filmYear" type="email">
+                      </div> <!-- form-group// -->                                                             
+                  </form>
+                  </article>
+                  </div> <!-- card.// -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" (click)="AddFilm()" data-dismiss="modal">Add</button>
+          </div>
+        </div>
+      </div>
+  </div>
+    <!-- Modal add Heure -->
+    <div class="modal fade" id="ModalAddHeure" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add New Heure</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="card bg-light">
+                    <article class="card-body mx-auto">
+                      <form>
+                      <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fas fa-video"></i> </span>
+                         </div>
+                         <select class="form-control" id="filsel" name="filmheure" [(ngModel)]="filmheure">
+                            <option *ngFor="let item of filmArray" value={{item.name}}>{{item.name}}</option>
+                          </select>
+                        </div> <!-- form-group// -->
+
+                        <div class="form-group input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"> <i class="fas fa-home"></i> </span>
+                           </div>
+                           <select class="form-control" id="cinsel" name="cinheure" [(ngModel)]="cinheure">
+                              <option *ngFor="let item of itemArray" value={{item.name}}>{{item.name}}</option>
+                            </select>
+                          </div> <!-- form-group// -->
+
+                        <div class="form-group input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="far fa-calendar-alt"></i> </span>
+                         </div>
+                            <input name="" class="form-control" placeholder="dd/mm" name="DayHeure" [(ngModel)]="DayHeure" type="email">
+                        </div> <!-- form-group// -->   
+                        
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"> <i class="far fa-clock"></i> </span>
+                           </div>
+                              <input name="" class="form-control" placeholder="hh:mm" name="hHeure" [(ngModel)]="hHeure" type="email">
+                          </div> <!-- form-group// --> 
+                    </form>
+                    </article>
+                    </div> <!-- card.// -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="AddHure()" data-dismiss="modal">Add</button>
+            </div>
+          </div>
+        </div>
+  </div>

@@ -1,0 +1,26 @@
+.col-xs-4 span{
+  cursor: pointer;
+}
+.col-md-4{
+    display: inline-block;
+    margin-left:-4px;
+  }
+  .col-md-4 img{
+    max-width:100%;
+    min-width: 100%;
+    height:500px;
+  }
+  body .carousel-indicators li{
+    background-color:red;
+  }
+  body .carousel-indicators{
+    bottom: 0;
+  }
+  body .carousel-control-prev-icon,
+  body .carousel-control-next-icon{
+    background-color:red;
+  }
+  body .no-padding{
+    padding-left: 0;
+    padding-right: 0;
+     }

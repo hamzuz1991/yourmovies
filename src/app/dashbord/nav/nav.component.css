@@ -1,0 +1,14 @@
+.form-inline{
+    margin-right: 5%;
+}
+.dropdown-menu{
+    max-width: 120px !important;
+    margin-top: 10px !important;
+}
+.dropdown-toggle{
+    max-width: 200px;
+}
+.rounded-circle{
+    max-width: 20px;
+    max-height: 20px;
+}

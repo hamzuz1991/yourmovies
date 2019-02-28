@@ -1,0 +1,95 @@
+<div class="container">
+<div class="row justify-content-md-center">
+    <div class="card">
+        <div class="row justify-content-md-center">
+            <span class="Loop" data-toggle="modal" data-target="#imageModal"><img class=" rounded-circle" src={{imgPath}} alt="Card image cap"></span>
+        </div>
+        <!-- Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src={{imgPath}} class="imgloop">
+      </div>
+    </div>
+  </div>
+</div>
+      <br/>
+        <div class="input-group input-group2 mb-3">          
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile01" (change)="UploadPhoto($event, key)" accept=".png,.jpg">
+            <label class="custom-file-label" for="inputGroupFile01">Update photo</label>
+          </div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Name:  {{name}}</h5>             
+          <p class="card-text"><b>Email adress:</b>  {{email}}</p>
+          <p class="card-text"><b>Phone number:</b> {{phone}}</p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Update
+            </button>
+        </div>
+      </div>
+</div>
+</div>
+<!-- Button trigger modal -->  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Profil</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="card bg-light">
+                <article class="card-body mx-auto">  
+                  <form>
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                     </div>
+                        <input name="" class="form-control" placeholder="Full name" name="name" [(ngModel)]="name" type="text">
+                    </div> <!-- form-group// -->
+                    <div class="form-group input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                     </div>
+                        <input name="" class="form-control" placeholder="Email address" name="email" [(ngModel)]="email" type="email">
+                    </div> <!-- form-group// -->
+                    <div class="form-group input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                    </div>
+                    <select class="custom-select">
+                        <option selected="">+216</option>
+                    </select>
+                      <input name="" class="form-control" placeholder="Phone number" name="phone" [(ngModel)]="phone" type="text">
+                    </div>                                                                
+                </form>
+                </article>
+                </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" data-toggle="collapse" href="#collapseExample" class="btn btn-primary">Save changes </button>
+        </div>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <div class="form-group input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+            </div>
+                <input class="form-control" placeholder="Your password to validate" type="password" name="pwd" [(ngModel)]="pwd">
+            </div> <!-- form-group// -->  
+            
+            <div class="form-group input-group">
+              <button type="button" (click)="UpdateProfil(key)" class="btn btn-success" data-dismiss="modal">Confirm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

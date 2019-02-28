@@ -1,0 +1,21 @@
+.card-title{
+    display: inline;
+}
+.btn{
+    float: right !important;
+    margin-bottom: 2%;
+}
+.okiokioki{
+    background: url('https://www.grazia.fr/var/grazia/storage/images/1/2/5/2/4/12524365/pourquoi-netflix-pourrait-racheter-des-salles-cinema.jpg') no-repeat;
+    display: block;
+    background-size: cover;
+    min-width: 100%;
+    min-height: 620px;    
+    padding: 3%;
+}
+.form-inline h4{
+    font-size: 20px;
+    margin-right: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 5px;
+}

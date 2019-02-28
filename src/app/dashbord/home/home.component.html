@@ -1,0 +1,85 @@
+
+<div class="container">
+<div class="row">
+  <div class="col-4">
+    <div class="card">
+      <img class="card-img-top" src={{Fapi?.Poster}} alt="Card image cap">
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="row justify-content-md-center">
+        <div class="card text-white bg-secondary mb-3 w-100">
+            <div class="card-header"><b>{{Fapi?.Title}}</b>  ({{Fapi?.Year}}) <div class="right-title"><b>IMDB Rating:</b>  {{Fapi?.imdbRating}}/10</div></div>
+            <div class="card-body">
+              <h5 class="card-title"><b>Actors:</b> {{Fapi?.Actors}}</h5>
+              <p class="card-text"><b>Genre:</b>  {{Fapi?.Genre}}</p>
+              <p class="card-text"><b>Runtime:</b>  {{Fapi?.Runtime}}</p>
+              <p class="card-text"><b>Plot: </b> {{Fapi?.Plot}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="row justify-content-md-center" *ngIf="FilmExist">
+        <a class="btn btn-primary" data-toggle="collapse" (click)="changeAFOK()" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Moore</a>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div *ngIf="AFOK">
+        <img src="https://pngimage.net/wp-content/uploads/2018/06/fl%C3%A8che-vers-le-bas-png-2.png" width="70">
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+      <app-map></app-map>
+  </div>
+
+</div>
+</div>
+
+<div class="container">
+
+      <div class="row justify-content-md-center">
+        <div class="collapse" id="collapseExample">
+          <div class="card-body">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                     <th scope="col">Cinema</th>
+                     <th scope="col">Adress</th>
+                     <th scope="col">Phone</th>
+                   </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of itemArray">
+                      <td>{{item?.name}}</td>  
+                      <td>{{item?.adr}}</td>
+                      <td>{{item?.phone}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                  <th scope="col">Film </th>
+                   <th scope="col">Cinema</th>
+                   <th scope="col">Day</th>
+                   <th scope="col">Time</th>
+                 </tr>
+                </thead>
+                <tbody>
+                      <tr *ngFor="let item of heureArray">
+                        <ng-template [ngIf]='item.film === Fapi?.Title'>
+                            <td>{{item?.film}}</td>
+                            <td>{{item?.cinema}}</td>
+                            <td>{{item.day}}</td>
+                            <td>{{item.heure}}</td>
+                        </ng-template>
+                      </tr>
+                </tbody>
+              </table>
+        </div>
+      </div>
+      </div>
+</div>

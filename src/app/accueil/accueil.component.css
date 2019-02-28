@@ -1,0 +1,24 @@
+#section1{
+    width: 100%;
+    height: auto;
+    display: block;
+    padding-top: 10%;
+    padding-bottom: 5%;
+    background: black;
+}
+#section2{
+    width: 100%;
+    max-height: 500px;
+    display: block;
+    background: url('https://files.qatarliving.com/styles/original/s3/2017/01/17/Movie%20mosaic.jpg?itok=eOAICAZ6') no-repeat;
+    background-size: cover;
+    padding: 5%;
+}
+#section3{
+    display: block;
+    width: 100%;
+    min-height: 660px;
+    background: url('https://actu-geek.com/wp-content/uploads/2016/10/cw-heros.jpg') no-repeat;
+    background-size: cover;
+    padding-top: 5%;
+}
